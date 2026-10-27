@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Space Shooter | AAH Enterprises</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader">
+    <div class="loader-logo">AAH</div>
+    <p>Arcade</p>
+    <div class="bar"><span></span></div>
+</div>
+
+<header>
+    <div class="logo">AAH Arcade</div>
+</header>
+
+<main>
+    <div class="play">
+        <div class="stage" id="stage">
+            <canvas id="game" width="640" height="800" aria-label="Space Shooter game"></canvas>
+
+            <!-- Top bar (only while playing) -->
+            <div id="topbar" class="topbar hidden">
+                <button id="menuBtn" class="iconbtn" type="button" aria-label="Game menu" aria-expanded="false"><i></i><i></i><i></i></button>
+                <div class="stats">
+                    <div><small>Score</small><b id="sScore">0</b></div>
+                    <div><small>Level</small><b id="sLevel">1</b></div>
+                    <div><small>Best</small><b id="sBest">0</b></div>
+                    <div><small>Lives</small><b id="sLives" class="lives"></b></div>
+                </div>
+            </div>
+
+            <!-- In-game menu -->
+            <div id="gameMenu" class="dropdown hidden">
+                <button id="gmResume" class="mbtn c primary" type="button">Resume</button>
+                <button id="gmSettings" class="mbtn c" type="button">Settings</button>
+                <button id="gmQuit" class="mbtn c" type="button">Quit</button>
+            </div>
+
+            <div class="ctrl ctrl-left">
+                <button id="btnLeft" class="ctl" type="button" aria-label="Move left">&#9664;</button>
+                <button id="btnRight" class="ctl" type="button" aria-label="Move right">&#9654;</button>
+            </div>
+            <div class="ctrl ctrl-right">
+                <button id="btnTurbo" class="ctl act turbo" type="button"><span>TURBO</span></button>
+                <button id="btnPower" class="ctl act power" type="button"><span>POWER</span></button>
+            </div>
+
+            <!-- Menus -->
+            <div id="overlay" class="overlay">
+
+                <div id="pMain" class="panel">
+                    <div class="brand">AAH</div>
+                    <h2>Space <span class="grad">Shooter</span></h2>
+                    <p id="menuBest" class="best">Best score: 0</p>
+                    <button id="mStart" class="mbtn c primary" type="button">&#9654; Start game</button>
+                    <button id="mLevel" class="mbtn" type="button"><span>Select level</span><em id="lvLabel">Level 1</em></button>
+                    <button id="mShip" class="mbtn" type="button"><span>Select aeroplane</span><em id="shipLabel">Flame</em></button>
+                    <button id="mSettings" class="mbtn c" type="button">Settings</button>
+                    <button id="mExit" class="mbtn c" type="button">Exit</button>
+                </div>
+
+                <div id="pLevel" class="panel hidden">
+                    <h2>Select level</h2>
+                    <div id="levelGrid" class="grid3"></div>
+                    <button id="lvBack" class="mbtn c" type="button">&#9664; Back</button>
+                </div>
+
+                <div id="pShip" class="panel hidden">
+                    <h2>Select aeroplane</h2>
+                    <div id="shipGrid" class="grid2"></div>
+                    <button id="shBack" class="mbtn c" type="button">&#9664; Back</button>
+                </div>
+
+                <div id="pSettings" class="panel hidden">
+                    <h2>Settings</h2>
+                    <button id="sSound" class="mbtn" type="button"><span>Sound</span><em id="sSoundV">On</em></button>
+                    <button id="sCtrl" class="mbtn" type="button"><span>On-screen buttons</span><em id="sCtrlV">All</em></button>
+                    <button id="sDiff" class="mbtn" type="button"><span>Difficulty</span><em id="sDiffV">Normal</em></button>
+                    <button id="sShake" class="mbtn" type="button"><span>Screen shake</span><em id="sShakeV">On</em></button>
+                    <button id="sFull" class="mbtn" type="button"><span>Fullscreen</span><em id="sFullV">Off</em></button>
+                    <button id="sBack" class="mbtn c" type="button">&#9664; Back</button>
+                </div>
+
+                <div id="pExit" class="panel hidden">
+                    <h2>Exit game?</h2>
+                    <p>Are you sure you want to leave?</p>
+                    <button id="exYes" class="mbtn c primary" type="button">Yes, exit</button>
+                    <button id="exNo" class="mbtn c" type="button">No, stay</button>
+                </div>
+
+                <div id="pBye" class="panel hidden">
+                    <div class="brand">AAH</div>
+                    <h2>Thanks for playing!</h2>
+                    <p>Come back soon, pilot.</p>
+                    <button id="byeBtn" class="mbtn c primary" type="button">Play again</button>
+                </div>
+
+                <div id="pMsg" class="panel hidden">
+                    <h2 id="ovTitle">Game over</h2>
+                    <p id="ovText"></p>
+                    <button id="ovBtn" class="mbtn c primary" type="button">Play again</button>
+                    <button id="ovMenu" class="mbtn c" type="button">Main menu</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <p class="help">
+        <b>Move:</b> buttons, drag with mouse or finger, or arrow keys / A and D. Your ship fires automatically.<br>
+        <span class="p">POWER</span> (Space or E) wipes the screen when full. <span class="c">TURBO</span> (Shift or W) gives 4 seconds of speed.<br>
+        <b>P</b> or <b>Esc</b> opens the game menu.
+    </p>
+</main>
+
+<footer>&copy; 2026 AAH Enterprises &bull; Founder &amp; CEO: Muhammad Awais Raza</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
